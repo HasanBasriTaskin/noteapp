@@ -10,7 +10,7 @@
 @package com.ucoruh.note
 @brief The com.ucoruh.note package contains all the classes and files related to the Note App.
 */
-package com.ucoruh.note;
+package com.hasan.note;
 
 import org.slf4j.LoggerFactory;
 

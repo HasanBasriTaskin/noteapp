@@ -4,7 +4,7 @@
 @brief This file contains the test cases for the NoteApp class.
 @details This file includes test methods to validate the functionality of the NoteApp class. It uses JUnit for unit testing.
 */
-package com.ucoruh.note;
+package com.hasan.note;
 
 import static org.junit.Assert.*;
 
