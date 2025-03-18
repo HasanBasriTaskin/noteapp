@@ -960,7 +960,7 @@ coverage*[.json, .xml, .info]
 
 # End of https://www.toptal.com/developers/gitignore/api/c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
 
-/calculator-app/src/site/markdown/readme.md
-/calculator-app/src/site/resources/assets/.gitkeep
-/calculator-app/src/site/resources/assets
-/calculator-app/src/site/resources/images/rteu_logo.jpg
+/note-app/src/site/markdown/readme.md
+/note-app/src/site/resources/assets/.gitkeep
+/note-app/src/site/resources/assets
+/note-app/src/site/resources/images/rteu_logo.jpg

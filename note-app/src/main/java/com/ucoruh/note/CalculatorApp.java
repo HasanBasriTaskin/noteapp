@@ -1,15 +1,15 @@
 /**
 
-@file CalculatorApp.java
-@brief This file serves as the main application file for the Calculator App.
-@details This file contains the entry point of the application, which is the main method. It initializes the necessary components and executes the Calculator App.
+@file NoteApp.java
+@brief This file serves as the main application file for the Note App.
+@details This file contains the entry point of the application, which is the main method. It initializes the necessary components and executes the Note App.
 */
 /**
 
-@package com.ucoruh.calculator
-@brief The com.ucoruh.calculator package contains all the classes and files related to the Calculator App.
+@package com.ucoruh.note
+@brief The com.ucoruh.note package contains all the classes and files related to the Note App.
 */
-package com.ucoruh.calculator;
+package com.ucoruh.note;
 
 import java.io.IOException;
 
@@ -19,24 +19,24 @@ import ch.qos.logback.classic.Logger;
 
 /**
  *
- * @class CalculatorApp
- * @brief This class represents the main application class for the Calculator
+ * @class NoteApp
+ * @brief This class represents the main application class for the Note
  *        App.
- * @details The CalculatorApp class provides the entry point for the Calculator
+ * @details The NoteApp class provides the entry point for the Note
  *          App. It initializes the necessary components, performs calculations,
  *          and handles exceptions.
  * @author ugur.coruh
  */
-public class CalculatorApp {
+public class NoteApp {
   /**
-   * @brief Logger for the CalculatorApp class.
+   * @brief Logger for the NoteApp class.
    */
-  private static final Logger logger = (Logger) LoggerFactory.getLogger(CalculatorApp.class);
+  private static final Logger logger = (Logger) LoggerFactory.getLogger(NoteApp.class);
 
   /**
-   * @brief The main entry point of the Calculator App.
+   * @brief The main entry point of the Note App.
    *
-   * @details The main method is the starting point of the Calculator App. It
+   * @details The main method is the starting point of the Note App. It
    *          initializes the logger, performs logging, displays a greeting
    *          message, and handles user input.
    *
