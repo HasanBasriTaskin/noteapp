@@ -8,6 +8,7 @@ package com.hasan.note;
 
 import static org.junit.Assert.*;
 
+import com.hasan.note.model.Note;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

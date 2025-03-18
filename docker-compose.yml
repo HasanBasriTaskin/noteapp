@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: note-app-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: notedb
+      MYSQL_USER: noteuser
+      MYSQL_PASSWORD: notepassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "noteuser", "-pnotepassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - note-network
+
+  # Java Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: note-app-backend
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/notedb
+      SPRING_DATASOURCE_USERNAME: noteuser
+      SPRING_DATASOURCE_PASSWORD: notepassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - note-network
+
+  # PHPMyAdmin for database management (optional, but useful for development)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: note-app-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - note-network
+
+volumes:
+  mysql-data:
+
+networks:
+  note-network:
+    driver: bridge
