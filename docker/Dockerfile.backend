@@ -2,14 +2,13 @@ FROM openjdk:11-jdk-slim
 
 WORKDIR /app
 
-# Add Maven dependencies (not required for a jar deployment but useful to cache dependencies)
+# Add Maven dependencies
 COPY pom.xml .
 RUN mkdir -p src/main/java && \
     mkdir -p src/main/resources
 
 # Copy source code
 COPY src/ src/
-COPY pom.xml .
 
 # Install Maven
 RUN apt-get update && \

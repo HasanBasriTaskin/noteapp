@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS reminders (
 -- Insert test data for development (optional)
 -- Uncomment if you want to have test data
 
-/*
+
 -- Create a test user (password: testpassword)
 INSERT INTO users (username, email, password_hash, full_name) 
 VALUES ('testuser', 'test@example.com', '$2a$10$XgNEHAr1E3JWAXjmQGfnZOEUZojLImJY8djrR2S8QglyK1ZhNO5Y.', 'Test User');
@@ -86,4 +86,4 @@ VALUES
 (2, 1),
 (3, 2),
 (3, 3);
-*/
+

@@ -1,80 +1,57 @@
-/**
-
-@file NoteApp.java
-@brief This file serves as the main application file for the Note App.
-@details This file contains the entry point of the application, which is the main method. It initializes the necessary components and executes the Note App.
-*/
-/**
-
-@package com.ucoruh.note
-@brief The com.ucoruh.note package contains all the classes and files related to the Note App.
-*/
 package com.hasan.note;
 
-import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.qos.logback.classic.Logger;
-
 /**
- *
- * @class NoteApp
- * @brief This class represents the main application class for the Note
- *        App.
- * @details The NoteApp class provides the entry point for the Note
- *          App. It initializes the necessary components, performs calculations,
- *          and handles exceptions.
- * @author ugur.coruh
+ * Main application class for the Note App.
+ * This class serves as the entry point for the JavaFX application.
  */
-public class NoteApp {
-  /**
-   * @brief Logger for the NoteApp class.
-   */
-  private static final Logger logger = (Logger) LoggerFactory.getLogger(NoteApp.class);
+public class NoteApp extends Application {
 
-  /**
-   * @brief The main entry point of the Note App.
-   *
-   * @details The main method is the starting point of the Note App. It
-   *          initializes the logger, performs logging, displays a greeting
-   *          message, and handles user input.
-   *
-   * @param args The command-line arguments passed to the application.
-   */
-  public static void main(String[] args) {
-    // Logging messages for informational purposes
-    logger.info("Logging message");
-    // Logging an error message
-    logger.error("Error message");
-    // Displaying a greeting message
-    System.out.println("Hello World!");
+  private static final Logger logger = LoggerFactory.getLogger(NoteApp.class);
 
+  @Override
+  public void start(Stage primaryStage) {
     try {
-      // Checking if command-line arguments are provided
-      if (args != null) {
-        // Checking if there are any arguments
-        if (args.length > 0) {
-          // Checking if the first argument is "1"
-          if (args[0].equals("1")) {
-            // Throwing a dummy IOException
-            throw new IOException("Dummy Exception...");
-          }
-        }
-      }
+      logger.info("Starting Note App");
 
-      // Prompting the user to press Enter to continue
-      System.out.println("Press Enter to Continue...");
-      // Reading user input from the console
-      System.in.read();
-      // Displaying a closing message
-      System.out.println("Thank you...");
-    } catch (IOException e) {
-      // Logging the exception
-      logger.error(e.toString());
-      // Printing the exception stack trace
-      e.printStackTrace();
+      // Load the main view
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+      Parent root = loader.load();
+
+      // Set the scene
+      Scene scene = new Scene(root);
+      primaryStage.setScene(scene);
+      primaryStage.setTitle("Note App");
+
+      // Show the stage
+      primaryStage.show();
+
+      logger.info("Note App started successfully");
+    } catch (Exception e) {
+      logger.error("Error starting Note App", e);
     }
   }
 
+  @Override
+  public void stop() {
+    // Clean up resources when the application is closing
+    logger.info("Shutting down Note App");
+  }
+
+  /**
+   * Main method to launch the application.
+   *
+   * @param args command line arguments
+   */
+  public static void main(String[] args) {
+    launch(args);
+  }
 }

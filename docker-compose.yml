@@ -11,10 +11,10 @@ services:
       MYSQL_USER: noteuser
       MYSQL_PASSWORD: notepassword
     ports:
-      - "3306:3306"
+    - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql-init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "noteuser", "-pnotepassword"]
       interval: 10s
@@ -26,8 +26,8 @@ services:
   # Java Backend API
   backend:
     build:
-      context: .
-      dockerfile: docker/Dockerfile.backend
+      context: ./note-app  # Doğru klasör yolunu belirtin
+      dockerfile: ../docker/Dockerfile.backend
     container_name: note-app-backend
     depends_on:
       mysql:
